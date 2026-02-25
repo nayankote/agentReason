@@ -45,7 +45,8 @@ export function extractFromLines(lines: string[], sessionId: string): ThinkingEv
 
     if (record.type === 'user') {
       // Capture the last user prompt text for prompt_context
-      const content = record.message?.content ?? []
+      const rawUserContent = record.message?.content
+      const content: ContentBlock[] = Array.isArray(rawUserContent) ? rawUserContent : []
       const textBlock = content.find((b) => b.type === 'text')
       if (textBlock?.text) {
         lastUserPrompt = textBlock.text
@@ -54,7 +55,8 @@ export function extractFromLines(lines: string[], sessionId: string): ThinkingEv
     }
 
     if (record.type === 'assistant') {
-      const content = record.message?.content ?? []
+      const rawContent = record.message?.content
+      const content: ContentBlock[] = Array.isArray(rawContent) ? rawContent : []
 
       // Find thinking block
       const thinkingBlock = content.find((b) => b.type === 'thinking')
