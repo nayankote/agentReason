@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /Users/nayan/Projects/agentReason/agent-context/dist/hooks/stop.js"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /Users/nayan/Projects/agentReason/agent-context/dist/hooks/user-prompt.js"
+          }
+        ]
+      }
+    ]
+  }
+}

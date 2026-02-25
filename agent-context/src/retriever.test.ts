@@ -1,4 +1,4 @@
-import { buildContextSlice } from './retriever.js'
+import { buildContextSlice, getEventStats } from './retriever.js'
 import { formatContextSlice } from './injector.js'
 import type { ThinkingEvent } from './schema.js'
 
@@ -50,4 +50,22 @@ test('formatContextSlice groups events by file', () => {
 
 test('formatContextSlice returns empty string for empty events', () => {
   expect(formatContextSlice([])).toBe('')
+})
+
+test('getEventStats returns total and counts by type', () => {
+  const events: ThinkingEvent[] = [
+    makeEvent('123e4567-e89b-12d3-a456-426614174010', 'a', []),
+    { ...makeEvent('123e4567-e89b-12d3-a456-426614174011', 'b', []), type: 'rejection' },
+    { ...makeEvent('123e4567-e89b-12d3-a456-426614174012', 'c', []), type: 'decision' },
+  ]
+  const stats = getEventStats(events)
+  expect(stats.total).toBe(3)
+  expect(stats.byType['decision']).toBe(2)
+  expect(stats.byType['rejection']).toBe(1)
+})
+
+test('getEventStats returns zero total for empty array', () => {
+  const stats = getEventStats([])
+  expect(stats.total).toBe(0)
+  expect(stats.byType).toEqual({})
 })
