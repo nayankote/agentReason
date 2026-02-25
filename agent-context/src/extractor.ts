@@ -78,8 +78,15 @@ export function extractFromLines(lines: string[], sessionId: string): ThinkingEv
         timestamp = new Date().toISOString()
       }
 
+      // Use the JSONL turn's own uuid as a stable id to prevent duplicates
+      // across multiple Stop hook runs on the same transcript.
+      // Fall back to crypto.randomUUID() only if uuid is missing.
+      const stableId = record.uuid && /^[0-9a-f-]{36}$/i.test(record.uuid)
+        ? record.uuid
+        : crypto.randomUUID()
+
       const event: ThinkingEvent = {
-        id: crypto.randomUUID(),
+        id: stableId,
         session_id: sessionId,
         timestamp,
         type: 'raw',

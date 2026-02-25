@@ -98,7 +98,7 @@ export class SessionGraphBackend implements GraphBackend {
   }
 
   deserialize(data: object): void {
-    const d = data as { type: string; sessions: Record<string, SessionNode> }
-    this.sessions = new Map(Object.entries(d.sessions))
+    const d = data as { type?: string; sessions?: Record<string, SessionNode> }
+    this.sessions = d.sessions ? new Map(Object.entries(d.sessions)) : new Map()
   }
 }
