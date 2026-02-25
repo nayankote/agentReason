@@ -59,6 +59,8 @@ export function applyHeuristics(events: ThinkingEvent[]): ThinkingEvent[] {
 }
 
 export async function summarizeWithHaiku(events: ThinkingEvent[]): Promise<ThinkingEvent[]> {
+  if (events.length === 0) return []
+
   const client = new Anthropic()
 
   const eventList = events
@@ -96,6 +98,7 @@ ${eventList}`
   let parsed: Array<{ id: string; type: string; summary: string }>
   try {
     parsed = JSON.parse(responseText)
+    if (!Array.isArray(parsed)) return applyHeuristics(events)
   } catch {
     return applyHeuristics(events)
   }
