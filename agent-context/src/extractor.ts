@@ -115,9 +115,15 @@ export function findLatestJSONL(projectDir: string): string | null {
     .filter((e) => e.isFile() && e.name.endsWith('.jsonl'))
     .map((e) => {
       const fullPath = path.join(projectDir, e.name)
-      const stat = fs.statSync(fullPath)
-      return { fullPath, mtime: stat.mtimeMs }
+      try {
+        const stat = fs.statSync(fullPath)
+        return { fullPath, mtime: stat.mtimeMs }
+      } catch {
+        // File disappeared between readdirSync and statSync (TOCTOU race) — skip it
+        return null
+      }
     })
+    .filter((entry): entry is { fullPath: string; mtime: number } => entry !== null)
 
   if (jsonlFiles.length === 0) return null
 
