@@ -39,15 +39,21 @@ export class FileGraphBackend implements GraphBackend {
     // Step 2: if results < 3, keyword match prompt against all file paths
     if (results.length < 3) {
       const promptLower = prompt.toLowerCase()
+      const promptKeywords = promptLower.split(/\s+/).filter(w => w.length > 2)
+      const matchesKeyword = (text: string): boolean => {
+        const t = text.toLowerCase()
+        return promptKeywords.some(kw => t.includes(kw))
+      }
       for (const [filePath, events] of Object.entries(this.tree)) {
         if (filePath.toLowerCase().includes(promptLower) || filePath === UNATTRIBUTED) {
           for (const event of events) {
             if (!seen.has(event.id)) {
-              // For __unattributed__, match by keyword in summary
+              // For __unattributed__, match by keyword in summary, raw_thinking, or prompt_context
               if (filePath === UNATTRIBUTED) {
                 if (
-                  event.summary.toLowerCase().includes(promptLower) ||
-                  event.raw_thinking.toLowerCase().includes(promptLower)
+                  matchesKeyword(event.summary) ||
+                  matchesKeyword(event.raw_thinking) ||
+                  matchesKeyword(event.prompt_context ?? '')
                 ) {
                   seen.add(event.id)
                   results.push(event)
