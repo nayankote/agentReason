@@ -7,13 +7,13 @@ export const ToolCallSummarySchema = z.object({
 })
 
 export const ThinkingEventSchema = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   session_id: z.string(),
-  timestamp: z.string(),
+  timestamp: z.string().datetime(),
   type: z.enum(['decision', 'rejection', 'tradeoff', 'exploration', 'raw']),
   summary: z.string(),
   raw_thinking: z.string(),
-  model_output: z.string(),
+  response_text: z.string(),
   tool_calls: z.array(ToolCallSummarySchema),
   files_affected: z.array(z.string()),
   prompt_context: z.string()

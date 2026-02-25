@@ -8,7 +8,7 @@ test('ThinkingEvent validates a complete event', () => {
     type: 'decision' as const,
     summary: 'Chose file-centric tree over flat list',
     raw_thinking: 'I could use a flat list but a tree is better because...',
-    model_output: 'I will implement the file-centric tree backend first.',
+    response_text: 'I will implement the file-centric tree backend first.',
     tool_calls: [{ tool_name: 'Write', input_summary: 'src/graph/file.ts', outcome: 'success' as const }],
     files_affected: ['src/graph/file.ts'],
     prompt_context: 'implement the graph backend'
