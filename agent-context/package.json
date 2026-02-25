@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "bin": {
-    "agent-context": "./dist/cli.js"
+    "agent-context": "./dist/src/cli.js",
+    "agent-context-stop": "./dist/hooks/stop.js",
+    "agent-context-prompt": "./dist/hooks/user-prompt.js"
   },
   "scripts": {
     "build": "tsc",
