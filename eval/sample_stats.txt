@@ -1,0 +1,64 @@
+SWE-bench Verified — Stratified Sample Report
+============================================================
+Full dataset:  500 problems
+Sample size:   30 problems
+
+REPO DISTRIBUTION
+Repo                                       Full   Sample   Full%   Sample%
+--------------------------------------------------------------------------
+astropy/astropy                              22        1    4.4%      3.3%
+django/django                               231       14   46.2%     46.7%
+matplotlib/matplotlib                        34        2    6.8%      6.7%
+mwaskom/seaborn                               2        0    0.4%      0.0%
+pallets/flask                                 1        0    0.2%      0.0%
+psf/requests                                  8        1    1.6%      3.3%
+pydata/xarray                                22        1    4.4%      3.3%
+pylint-dev/pylint                            10        0    2.0%      0.0%
+pytest-dev/pytest                            19        2    3.8%      6.7%
+scikit-learn/scikit-learn                    32        2    6.4%      6.7%
+sphinx-doc/sphinx                            44        2    8.8%      6.7%
+sympy/sympy                                  75        5   15.0%     16.7%
+
+DIFFICULTY DISTRIBUTION
+Difficulty             Full   Sample   Full%   Sample%
+------------------------------------------------------
+1-4 hours                42        1    8.4%      3.3%
+15 min - 1 hour         261       16   52.2%     53.3%
+<15 min fix             194       13   38.8%     43.3%
+>4 hours                  3        0    0.6%      0.0%
+
+Strata covered: 16/33
+
+SAMPLED PROBLEMS
+#    instance_id                                   difficulty   repo
+------------------------------------------------------------------------------------------
+1    pytest-dev__pytest-5631                       15 min - 1 hour pytest-dev/pytest
+2    sympy__sympy-20438                            15 min - 1 hour sympy/sympy
+3    astropy__astropy-14539                        15 min - 1 hour astropy/astropy
+4    sympy__sympy-19495                            <15 min fix  sympy/sympy
+5    django__django-12193                          <15 min fix  django/django
+6    django__django-14752                          <15 min fix  django/django
+7    pytest-dev__pytest-5262                       <15 min fix  pytest-dev/pytest
+8    pydata__xarray-6721                           15 min - 1 hour pydata/xarray
+9    django__django-12308                          <15 min fix  django/django
+10   django__django-13346                          15 min - 1 hour django/django
+11   django__django-11333                          15 min - 1 hour django/django
+12   sympy__sympy-15875                            <15 min fix  sympy/sympy
+13   django__django-15382                          15 min - 1 hour django/django
+14   sympy__sympy-23824                            15 min - 1 hour sympy/sympy
+15   django__django-10097                          <15 min fix  django/django
+16   sphinx-doc__sphinx-10466                      15 min - 1 hour sphinx-doc/sphinx
+17   django__django-11149                          15 min - 1 hour django/django
+18   django__django-13786                          15 min - 1 hour django/django
+19   matplotlib__matplotlib-25287                  <15 min fix  matplotlib/matplotlib
+20   django__django-13315                          15 min - 1 hour django/django
+21   scikit-learn__scikit-learn-10297              15 min - 1 hour scikit-learn/scikit-learn
+22   scikit-learn__scikit-learn-25232              <15 min fix  scikit-learn/scikit-learn
+23   django__django-10554                          1-4 hours    django/django
+24   psf__requests-1142                            <15 min fix  psf/requests
+25   matplotlib__matplotlib-14623                  15 min - 1 hour matplotlib/matplotlib
+26   django__django-13741                          <15 min fix  django/django
+27   django__django-15741                          <15 min fix  django/django
+28   sympy__sympy-20428                            15 min - 1 hour sympy/sympy
+29   sphinx-doc__sphinx-10323                      <15 min fix  sphinx-doc/sphinx
+30   django__django-14559                          15 min - 1 hour django/django
